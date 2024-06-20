@@ -4,7 +4,7 @@ require("dotenv").config({ path: "../config/.env" });
 
 const VerifyToken = (req, res) => {
   try {
-    let accessToken = process.env.WA_ACCESS_TOKEN;
+    let accessToken = "679e95b74f7b417c97b40413cdf798d9";
     let token = req.query["hub.verify_token"];
     let challenge = req.query["hub.challenge"];
     if (challenge != null && token != null && token == accessToken) {
