@@ -1,7 +1,9 @@
 // Home Controllers
 // ****************
 const fs = require("fs");
-const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
+const myConsole = new console.Console(
+  fs.createWriteStream("./public/logs.txt")
+);
 
 const VerifyToken = (req, res) => {
   try {
