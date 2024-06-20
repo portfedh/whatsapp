@@ -1,7 +1,7 @@
 {
-  "name": "Whatsap App",
+  "name": "WhatsApp App",
   "version": "1.0.0",
-  "description": "Test for Whatsapp App",
+  "description": "Test for WhatsApp App",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",

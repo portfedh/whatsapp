@@ -7,13 +7,13 @@ const result = require("dotenv").config({ path: "./config/.env" });
 // Import express
 const express = require("express");
 const app = express();
-// Set template engine to EJS:
+// Set template engine to EJS: // Check
 app.set("view engine", "ejs");
-// Serve static files from the 'public' directory.
+// Serve static files from the 'public' directory // Check
 app.use(express.static("public"));
-// Enable reading JSON data:
+// Enable reading JSON data: // Needed
 app.use(express.json());
-// Enable reading from html elements:
+// Enable reading from html elements: // Check
 app.use(express.urlencoded({ extended: true }));
 
 // Routes:
