@@ -1,6 +1,6 @@
 // Home Controllers
 // ****************
-require("dotenv").config();
+require("dotenv").config({ path: "../config/.env" });
 
 const VerifyToken = (req, res) => {
   try {
