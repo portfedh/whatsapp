@@ -29,6 +29,7 @@ const ReceiveMessage = (req, res) => {
     let text = getTextUser(messages);
 
     myConsole.log(messageObject);
+    console.log(messageObject);
     res.send("EVENT_RECEIVED");
   } catch (err) {
     console.log(err);
@@ -47,15 +48,18 @@ function getTextUser(messages) {
     let interactiveObject = messages["interactive"];
     let typeInteractive = interactiveObject["type"];
     myConsole.log(interactiveObject);
+    console.log(interactiveObject);
     if (typeInteractive === "button_reply") {
       text = interactiveObject["button_reply"]["title"];
     } else if (typeInteractive === "list_reply") {
       text = interactiveObject["list_reply"]["title"];
     } else {
       myConsole.log("Sin mensaje");
+      console.log("Sin mensaje");
     }
   } else {
     myConsole.log("Sin mensaje");
+    console.log("Sin mensaje");
   }
   return text;
 }
