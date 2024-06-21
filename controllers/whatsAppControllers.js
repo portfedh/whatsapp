@@ -1,9 +1,7 @@
 // Home Controllers
 // ****************
 const fs = require("fs");
-const myConsole = new console.Console(
-  fs.createWriteStream("./public/logs.txt")
-);
+const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 
 const VerifyToken = (req, res) => {
   try {
@@ -27,6 +25,9 @@ const ReceiveMessage = (req, res) => {
     let changes = entry["changes"][0];
     let value = changes["value"];
     let messageObject = value["messages"];
+    let messages = messageObject[0];
+    let text = getTextUser(messages);
+
     myConsole.log(messageObject);
     res.send("EVENT_RECEIVED");
   } catch (err) {
@@ -35,6 +36,29 @@ const ReceiveMessage = (req, res) => {
     res.send("EVENT_RECEIVED");
   }
 };
+
+function getTextUser(messages) {
+  let text = "";
+  let typeMessage = messages["type"];
+
+  if (typeMessage === "text") {
+    text = messages["text"]["body"];
+  } else if (typeMessage === "interactive") {
+    let interactiveObject = messages["interactive"];
+    let typeInteractive = interactiveObject["type"];
+    myConsole.log(interactiveObject);
+    if (typeInteractive === "button_reply") {
+      text = interactiveObject["button_reply"]["title"];
+    } else if (typeInteractive === "list_reply") {
+      text = interactiveObject["list_reply"]["title"];
+    } else {
+      myConsole.log("Sin mensaje");
+    }
+  } else {
+    myConsole.log("Sin mensaje");
+  }
+  return text;
+}
 
 module.exports = {
   VerifyToken,
