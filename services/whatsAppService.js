@@ -1,8 +1,9 @@
 const https = require("https");
-const { WA_TOKEN } = process.env;
+require("dotenv").config({ path: "../config/.env" });
 
 function sendMessageWhatsApp(textResponse, number) {
   console.log("WA Token: ", WA_TOKEN); // Debugging Temp
+  console.log("My Token: ", MY_TOKEN); // Debugging Temp
 
   const data = JSON.stringify({
     messaging_product: "whatsapp",
