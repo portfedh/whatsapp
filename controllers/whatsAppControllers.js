@@ -30,8 +30,7 @@ const ReceiveMessage = (req, res) => {
       let messages = messageObject[0];
       let text = getTextUser(messages);
       console.log("ReceiveMessage/Text: ", text);
-      myConsole.log(messageObject);
-      console.log("ReceiveMessage/Message Object: ", messageObject); //interactive object
+      myConsole.log(text);
     }
 
     res.send("EVENT_RECEIVED");
