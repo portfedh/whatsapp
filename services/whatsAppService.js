@@ -21,7 +21,8 @@ function sendMessageWhatsApp(textResponse, number) {
     headers: {
       "Content-Type": "application/json",
       "Content-Length": data.length,
-      Authorization: "Bearer " + WA_TOKEN,
+      Authorization:
+        "Bearer EAAGbC7g2ej8BOwmdkr4x1bORZC5h5WUKnghttc0lGVeznKE2bnN4Ii0J3zz9UTa0hwuOxdVQVqmKy7ZBMAFTxTpFFO6abLbwaafryCAo7yqkZCPqqaiqmcK20rcycPSToANxkwCX2ObLj2HZBodxQuJTl0lkgZCXiBhOsrHPrdNZCyfN08Tz38CT8io8VQPw7AJS68LllD7iXEUr0N33LRHICWkjk4LKkL",
     },
   };
 
