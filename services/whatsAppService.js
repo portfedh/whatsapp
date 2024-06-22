@@ -2,6 +2,8 @@ const https = require("https");
 const { WA_TOKEN } = process.env;
 
 function sendMessageWhatsApp(textResponse, number) {
+  console.log("WA Token: ", WA_TOKEN); // Debugging Temp
+
   const data = JSON.stringify({
     messaging_product: "whatsapp",
     recipient_type: "individual",
@@ -34,7 +36,6 @@ function sendMessageWhatsApp(textResponse, number) {
   req.on("error", (error) => {
     console.error(error);
   });
-  console.log("WA Token: ", WA_TOKEN); // Debugging Temp
   req.write(data);
   req.end();
 }
