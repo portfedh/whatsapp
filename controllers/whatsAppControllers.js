@@ -27,10 +27,9 @@ const ReceiveMessage = (req, res) => {
     let messageObject = value["messages"];
     let messages = messageObject[0];
     let text = getTextUser(messages);
-    console.log(text);
-
+    console.log("Text: ", text);
     myConsole.log(messageObject);
-    console.log(messageObject);
+    console.log("Message Object: ", messageObject);
     res.send("EVENT_RECEIVED");
   } catch (err) {
     console.log(err);
@@ -49,7 +48,7 @@ function getTextUser(messages) {
     let interactiveObject = messages["interactive"];
     let typeInteractive = interactiveObject["type"];
     myConsole.log(interactiveObject);
-    console.log(interactiveObject);
+    console.log("Interactive Object: ", interactiveObject);
     if (typeInteractive === "button_reply") {
       text = interactiveObject["button_reply"]["title"];
     } else if (typeInteractive === "list_reply") {
