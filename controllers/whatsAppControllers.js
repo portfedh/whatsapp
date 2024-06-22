@@ -3,7 +3,6 @@
 const fs = require("fs");
 const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 const whatsappService = require("../services/whatsappService");
-require("dotenv").config({ path: "../config/.env" });
 
 const VerifyToken = (req, res) => {
   try {
