@@ -2,7 +2,7 @@
 // ****************
 const fs = require("fs");
 const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
-const whatsAppService = require("../services/whatsAppService");
+const whatsappService = require("../services/whatsappService");
 const { MY_TOKEN } = process.env;
 
 const VerifyToken = (req, res) => {
@@ -35,7 +35,7 @@ const ReceiveMessage = (req, res) => {
       myConsole.log("ReceiveNumber: ", number);
       console.log("ReceiveMessage/Text: ", text);
       myConsole.log(text);
-      whatsAppService.sendMessageWhatsApp("el usuario dijo " + text, number);
+      whatsappService.sendMessageWhatsApp("el usuario dijo " + text, number);
     }
 
     res.send("EVENT_RECEIVED");
