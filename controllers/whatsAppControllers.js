@@ -32,6 +32,7 @@ const ReceiveMessage = (req, res) => {
       let text = getTextUser(messages);
       let number = messages["from"];
       // myConsole.log("messages: ", messages);
+      console.log("The whole thing: ", entry);
       console.log("ReceiveMessage/Text: ", text);
       console.log("ReceiveMessage/Number: ", number);
       // myConsole.log(text);
