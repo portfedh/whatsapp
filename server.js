@@ -22,6 +22,6 @@ app.use("/", homeRoutes);
 
 // Server Port
 // ===========
-app.listen(PORT || 3131, () => {
+app.listen(process.env.PORT || 3131, () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
