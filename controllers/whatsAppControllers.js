@@ -77,4 +77,5 @@ function getTextUser(messages) {
 module.exports = {
   VerifyToken,
   ReceiveMessage,
+  getTextUser,
 };
