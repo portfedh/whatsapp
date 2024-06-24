@@ -5,47 +5,47 @@ const fs = require("fs");
 const whatsAppService = require("../services/whatsAppService");
 
 const VerifyToken = (req, res) => {
-  try {
-    let accessToken = "679e95b74f7b417c97b40413cdf798d9"; // Make Environment Variable
-    let token = req.query["hub.verify_token"];
-    let challenge = req.query["hub.challenge"];
-    if (challenge != null && token != null && token == accessToken) {
-      res.send(challenge);
-    } else {
-      res.status(400).send({ accessToken, token, challenge });
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(400).send({ err, accessToken, token, challenge });
-  }
+  // try {
+  //   let accessToken = "679e95b74f7b417c97b40413cdf798d9"; // Make Environment Variable
+  //   let token = req.query["hub.verify_token"];
+  //   let challenge = req.query["hub.challenge"];
+  //   if (challenge != null && token != null && token == accessToken) {
+  //     res.send(challenge);
+  //   } else {
+  //     res.status(400).send({ accessToken, token, challenge });
+  //   }
+  // } catch (err) {
+  //   console.log(err);
+  //   res.status(400).send({ err, accessToken, token, challenge });
+  // }
+  res.send("hola Verify Token");
 };
 
 const ReceiveMessage = (req, res) => {
-  try {
-    let entry = req.body["entry"][0];
-    let changes = entry["changes"][0];
-    let value = changes["value"];
-    let messageObject = value["messages"];
-
-    if (typeof messageObject != "undefined") {
-      let messages = messageObject[0];
-      let text = getTextUser(messages);
-      let number = messages["from"];
-      // myConsole.log("messages: ", messages);
-      console.log("The whole thing: ", entry);
-      console.log("ReceiveMessage/Text: ", text);
-      console.log("ReceiveMessage/Number: ", number);
-      // myConsole.log(text);
-      whatsAppService.sendMessageWhatsApp("el usuario dijo " + text, number);
-      console.log("Mensaje enviado");
-    }
-
-    res.send("EVENT_RECEIVED");
-  } catch (err) {
-    console.log(err);
-    // Necessary to avoid resending the message
-    res.send("EVENT_RECEIVED");
-  }
+  // try {
+  //   let entry = req.body["entry"][0];
+  //   let changes = entry["changes"][0];
+  //   let value = changes["value"];
+  //   let messageObject = value["messages"];
+  //   if (typeof messageObject != "undefined") {
+  //     let messages = messageObject[0];
+  //     let text = getTextUser(messages);
+  //     let number = messages["from"];
+  //     // myConsole.log("messages: ", messages);
+  //     console.log("The whole thing: ", entry);
+  //     console.log("ReceiveMessage/Text: ", text);
+  //     console.log("ReceiveMessage/Number: ", number);
+  //     // myConsole.log(text);
+  //     whatsAppService.sendMessageWhatsApp("el usuario dijo " + text, number);
+  //     console.log("Mensaje enviado");
+  //   }
+  //   res.send("EVENT_RECEIVED");
+  // } catch (err) {
+  //   console.log(err);
+  //   // Necessary to avoid resending the message
+  //   res.send("EVENT_RECEIVED");
+  // }
+  res.send("hola Receive Message");
 };
 
 function getTextUser(messages) {
@@ -77,4 +77,5 @@ function getTextUser(messages) {
 module.exports = {
   VerifyToken,
   ReceiveMessage,
+  getTextUser,
 };
