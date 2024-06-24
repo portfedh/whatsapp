@@ -1,7 +1,7 @@
 // Home Controllers
 // ****************
 const fs = require("fs");
-// const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
+const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 const whatsAppService = require("../services/whatsAppService");
 
 const VerifyToken = (req, res) => {
@@ -16,6 +16,7 @@ const VerifyToken = (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    // Remove the information sent to the client
     res.status(400).send({ err, accessToken, token, challenge });
   }
 };
@@ -31,20 +32,16 @@ const ReceiveMessage = (req, res) => {
       let messages = messageObject[0];
       let text = getTextUser(messages);
       let number = messages["from"];
-      // myConsole.log("messages: ", messages);
-      console.log("The whole thing: ", entry);
-      console.log("ReceiveMessage/Text: ", text);
-      console.log("ReceiveMessage/Number: ", number);
-      // myConsole.log(text);
-      whatsAppService.sendMessageWhatsApp("el usuario dijo " + text, number);
-      console.log("Mensaje enviado");
+      myConsole.log("Messages: ", messages);
+      console.log("Mensaje recibido: ", text);
+      console.log("Teléfono de recepción: ", number);
+      // Tem code: Echo message
+      whatsAppService.sendMessageWhatsApp("El usuario dijo " + text, number);
     }
-
-    res.send("EVENT_RECEIVED");
+    res.send("EVENT_RECEIVED"); // API required response
   } catch (err) {
     console.log(err);
-    // Necessary to avoid resending the message
-    res.send("EVENT_RECEIVED");
+    res.send("EVENT_RECEIVED"); // API required response
   }
 };
 
@@ -57,18 +54,18 @@ function getTextUser(messages) {
   } else if (typeMessage === "interactive") {
     let interactiveObject = messages["interactive"];
     let typeInteractive = interactiveObject["type"];
-    // myConsole.log(interactiveObject);
+    myConsole.log(interactiveObject);
     console.log("getTextUser/Interactive Object: ", interactiveObject);
     if (typeInteractive === "button_reply") {
       text = interactiveObject["button_reply"]["title"];
     } else if (typeInteractive === "list_reply") {
       text = interactiveObject["list_reply"]["title"];
     } else {
-      // myConsole.log("Sin mensaje");
+      myConsole.log("Sin mensaje");
       console.log("Sin mensaje");
     }
   } else {
-    // myConsole.log("Sin mensaje");
+    myConsole.log("Sin mensaje");
     console.log("Sin mensaje");
   }
   return text;
