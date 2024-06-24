@@ -28,7 +28,7 @@ function sendMessageWhatsApp(textResponse, number) {
       Authorization:
         "Bearer EAAGbC7g2ej8BO8tVhAoZBHc7alvODhP7QRrUZBhJlXPmr6RIZAYH2JbUVV6V4bghvkFZC8cxlhDwKDdvgwvlKEzAbKze6j8ABk3YWayLZAa22RViEZAmd5XCNZCoEVuqRP0RxkGgXjDLykdvc2BF4ipZCFHdwUczdJoodjZCXM8mBbl2ZA08cbtpD1uBAqEfTsKB9W66sw1eDpVn2ZBEZBxkgr6Sw0s7OjVPV1lkrXhca2U29tBaLp5AB11J",
     },
-  }; // Substitute & make env variable
+  }; // Substitute with environment variable
 
   console.log("Options Variable: ", options);
 
@@ -40,6 +40,7 @@ function sendMessageWhatsApp(textResponse, number) {
 
   req.on("error", (error) => {
     console.error(error);
+    console.log("Error: ", error); // Testing
   });
   req.write(data);
   req.end();
