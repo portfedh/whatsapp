@@ -50,9 +50,14 @@ const ReceiveMessage = (req, res) => {
     if (typeof messageObject != "undefined") {
       // If there is a message:
       let messages = messageObject[0];
+      let number = messages["from"];
       let text = getTextUser(messages);
-      myConsole.log("messages: ", messages);
-      myConsole.log("text: ", text);
+      myConsole.log("Text: ", text);
+      myConsole.log("Number: ", number);
+      myConsole.log("Full Message: ", messages);
+
+      // Temp: Enviar el mismo mensaje
+      whatsAppService.sendMessageWhatsApp("El usuario dijo: " + text, number);
     }
 
     res.send("EVENT_RECEIVED");
