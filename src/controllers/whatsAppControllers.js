@@ -51,13 +51,18 @@ const ReceiveMessage = (req, res) => {
       // If there is a message:
       let messages = messageObject[0];
       let number = messages["from"];
+      let normalizedNumber = normalizeNumber(number);
       let text = getTextUser(messages);
       myConsole.log("Text: ", text);
       myConsole.log("Number: ", number);
+      myConsole.log("Normalized Number: ", normalizedNumber);
       myConsole.log("Full Message: ", messages);
 
       // Temp: Enviar el mismo mensaje
-      whatsAppService.sendMessageWhatsApp("El usuario dijo: " + text, number);
+      whatsAppService.sendMessageWhatsApp(
+        "El usuario dijo: " + text,
+        normalizedNumber
+      );
     }
 
     res.send("EVENT_RECEIVED");
@@ -92,8 +97,16 @@ function getTextUser(messages) {
   return text;
 }
 
+function normalizeNumber(number) {
+  if (number.startsWith("521")) {
+    return "52" + number.slice(3);
+  }
+  return number;
+}
+
 module.exports = {
   VerifyToken,
   ReceiveMessage,
   getTextUser,
+  normalizeNumber,
 };
