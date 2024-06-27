@@ -6,17 +6,7 @@ Function to send messages to WhatsApp a user.
 - Requires Token from Meta Developer Console
 - The path is also provided by Meta
 */
-function sendMessageWhatsApp(textResponse, number) {
-  const data = JSON.stringify({
-    messaging_product: "whatsapp",
-    recipient_type: "individual",
-    to: number,
-    type: "text",
-    text: {
-      preview_url: false,
-      body: textResponse,
-    },
-  });
+function sendMessageWhatsApp(data) {
   const options = {
     host: "graph.facebook.com",
     path: "/v19.0/344985858695654/messages",

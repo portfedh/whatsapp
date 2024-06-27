@@ -3,7 +3,7 @@
 const fs = require("fs");
 const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 const whatsAppService = require("../services/whatsAppService");
-const { type } = require("os");
+const samples = require("../shared/sampleModels");
 
 /* 
 VerifyToken:
@@ -59,10 +59,37 @@ const ReceiveMessage = (req, res) => {
       myConsole.log("Full Message: ", messages);
 
       // Temp: Enviar el mismo mensaje
-      whatsAppService.sendMessageWhatsApp(
-        "El usuario dijo: " + text,
-        normalizedNumber
-      );
+      if (text === "text") {
+        let data = samples.sampleText("Hallo!", normalizedNumber);
+        whatsAppService.sendMessageWhatsApp(data);
+      } else if (text === "image") {
+        let data = samples.sampleImage(normalizedNumber);
+        whatsAppService.sendMessageWhatsApp(data);
+      } else if (text === "audio") {
+        let data = samples.sampleAudio(normalizedNumber);
+        whatsAppService.sendMessageWhatsApp(data);
+      } else if (text === "video") {
+        let data = samples.sampleVideo(normalizedNumber);
+        whatsAppService.sendMessageWhatsApp(data);
+      } else if (text === "document") {
+        let data = samples.sampleDocument(normalizedNumber);
+        whatsAppService.sendMessageWhatsApp(data);
+      } else if (text === "button") {
+        let data = samples.sampleButton(normalizedNumber);
+        whatsAppService.sendMessageWhatsApp(data);
+      } else if (text === "list") {
+        let data = samples.sampleList(normalizedNumber);
+        whatsAppService.sendMessageWhatsApp(data);
+      } else if (text === "location") {
+        let data = samples.sampleLocation(normalizedNumber);
+        whatsAppService.sendMessageWhatsApp(data);
+      } else {
+        let data = samples.sampleText(
+          "Tipo de mensaje no identificado!",
+          normalizedNumber
+        );
+        whatsAppService.sendMessageWhatsApp(data);
+      }
     }
 
     res.send("EVENT_RECEIVED");
