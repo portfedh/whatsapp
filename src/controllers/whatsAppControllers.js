@@ -6,7 +6,7 @@ const whatsAppService = require("../services/whatsAppService");
 const samples = require("../shared/sampleModels");
 
 /* 
-VerifyToken:
+VerifyToken():
 Function is only called once
 - Requires a webhooks to be set up in the Facebook Developer Console
 - Requires a public url to send the request
@@ -34,7 +34,7 @@ const VerifyToken = (req, res) => {
 };
 
 /* 
-ReceiveMessage:
+ReceiveMessage():
 Function is called every time a message is received
 - Requires a webhooks to be set up in the Facebook Developer Console
 - Requires you to be subscribed to messages
@@ -113,12 +113,45 @@ function getTextUser(messages) {
   }
   return text;
 }
-
+/**
+normalizeNumber():
+Remove the leading "1" if it is present after the country code "52" for Mexico.
+Otherwise, return the number as is.
+ */
 function normalizeNumber(number) {
   if (number.startsWith("521")) {
     return "52" + number.slice(3);
   }
   return number;
+}
+
+// Function to process the message with our sample texts.
+// let data = processMessageTextSample(text, normalizedNumber);
+// Log the data being sent
+// myConsole.log("Data to send: ", data);
+// whatsAppService.sendMessageWhatsApp(data);
+function processMessageTextSample(text, normalizedNumber) {
+  let data;
+  if (text === "text") {
+    data = samples.sampleText("Hallo!", normalizedNumber);
+  } else if (text === "image") {
+    data = samples.sampleImage(normalizedNumber);
+  } else if (text === "audio") {
+    data = samples.sampleAudio(normalizedNumber);
+  } else if (text === "video") {
+    data = samples.sampleVideo(normalizedNumber);
+  } else if (text === "document") {
+    data = samples.sampleDocument(normalizedNumber);
+  } else if (text === "button") {
+    data = samples.sampleButtons(normalizedNumber);
+  } else if (text === "list") {
+    data = samples.sampleList(normalizedNumber);
+  } else if (text === "location") {
+    data = samples.sampleLocation(normalizedNumber); //error to debug
+  } else {
+    data = samples.sampleText("Mensaje no identificado!", normalizedNumber);
+  }
+  return data;
 }
 
 module.exports = {
