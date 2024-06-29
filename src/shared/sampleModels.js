@@ -32,7 +32,7 @@ function sampleAudio(number) {
     to: number,
     type: "audio",
     audio: {
-      link: "https://file-examples.com/storage/fe3cb26995666504a8d6180/2017/11/file_example_MP3_700KB.mp3",
+      link: "https://www.freesoundeffects.com/files/mp3_89353.mp3",
     },
   });
   return data;

@@ -18,7 +18,7 @@ function sendMessageWhatsApp(data) {
       Authorization:
         "Bearer EAAGbC7g2ej8BO8tVhAoZBHc7alvODhP7QRrUZBhJlXPmr6RIZAYH2JbUVV6V4bghvkFZC8cxlhDwKDdvgwvlKEzAbKze6j8ABk3YWayLZAa22RViEZAmd5XCNZCoEVuqRP0RxkGgXjDLykdvc2BF4ipZCFHdwUczdJoodjZCXM8mBbl2ZA08cbtpD1uBAqEfTsKB9W66sw1eDpVn2ZBEZBxkgr6Sw0s7OjVPV1lkrXhca2U29tBaLp5AB11J",
     },
-  }; // Substitute & make env variable
+  }; // Substitute for new token & make env variable
 
   const req = https.request(options, (res) => {
     res.on("data", (d) => {

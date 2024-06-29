@@ -8,7 +8,7 @@ const samples = require("../shared/sampleModels");
 /* 
 VerifyToken:
 Function is only called once
-Requires a webhooks to be set up in the Facebook Developer Console
+- Requires a webhooks to be set up in the Facebook Developer Console
 - Requires a public url to send the request
 - Requires you paste accessToken there to verify the request
 */
@@ -36,7 +36,7 @@ const VerifyToken = (req, res) => {
 /* 
 ReceiveMessage:
 Function is called every time a message is received
-Requires a webhooks to be set up in the Facebook Developer Console
+- Requires a webhooks to be set up in the Facebook Developer Console
 - Requires you to be subscribed to messages
 - EVENT_RECEIVED is a necessary response to confirm message
 */
@@ -75,12 +75,13 @@ const ReceiveMessage = (req, res) => {
         let data = samples.sampleDocument(normalizedNumber);
         whatsAppService.sendMessageWhatsApp(data);
       } else if (text === "button") {
-        let data = samples.sampleButton(normalizedNumber);
+        let data = samples.sampleButtons(normalizedNumber);
         whatsAppService.sendMessageWhatsApp(data);
       } else if (text === "list") {
         let data = samples.sampleList(normalizedNumber);
         whatsAppService.sendMessageWhatsApp(data);
       } else if (text === "location") {
+        //error
         let data = samples.sampleLocation(normalizedNumber);
         whatsAppService.sendMessageWhatsApp(data);
       } else {
