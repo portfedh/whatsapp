@@ -54,45 +54,34 @@ const ReceiveMessage = (req, res) => {
       let normalizedNumber = normalizeNumber(number);
       let text = getTextUser(messages);
       myConsole.log("Text: ", text);
-      myConsole.log("Number: ", number);
       myConsole.log("Normalized Number: ", normalizedNumber);
       myConsole.log("Full Message: ", messages);
 
       // Temp: Enviar el mismo mensaje
+      let data;
       if (text === "text") {
-        let data = samples.sampleText("Hallo!", normalizedNumber);
-        whatsAppService.sendMessageWhatsApp(data);
+        data = samples.sampleText("Hallo!", normalizedNumber);
       } else if (text === "image") {
-        let data = samples.sampleImage(normalizedNumber);
-        whatsAppService.sendMessageWhatsApp(data);
+        data = samples.sampleImage(normalizedNumber);
       } else if (text === "audio") {
-        let data = samples.sampleAudio(normalizedNumber);
-        whatsAppService.sendMessageWhatsApp(data);
+        data = samples.sampleAudio(normalizedNumber);
       } else if (text === "video") {
-        let data = samples.sampleVideo(normalizedNumber);
-        whatsAppService.sendMessageWhatsApp(data);
+        data = samples.sampleVideo(normalizedNumber);
       } else if (text === "document") {
-        let data = samples.sampleDocument(normalizedNumber);
-        whatsAppService.sendMessageWhatsApp(data);
+        data = samples.sampleDocument(normalizedNumber);
       } else if (text === "button") {
-        let data = samples.sampleButtons(normalizedNumber);
-        whatsAppService.sendMessageWhatsApp(data);
+        data = samples.sampleButtons(normalizedNumber);
       } else if (text === "list") {
-        let data = samples.sampleList(normalizedNumber);
-        whatsAppService.sendMessageWhatsApp(data);
+        data = samples.sampleList(normalizedNumber);
       } else if (text === "location") {
-        //error
-        let data = samples.sampleLocation(normalizedNumber);
-        whatsAppService.sendMessageWhatsApp(data);
+        data = samples.sampleLocation(normalizedNumber); //error to debug
       } else {
-        let data = samples.sampleText(
-          "Tipo de mensaje no identificado!",
-          normalizedNumber
-        );
-        whatsAppService.sendMessageWhatsApp(data);
+        data = samples.sampleText("Mensaje no identificado!", normalizedNumber);
       }
+      // Log the data being sent
+      myConsole.log("Data to send: ", data);
+      whatsAppService.sendMessageWhatsApp(data);
     }
-
     res.send("EVENT_RECEIVED");
   } catch (err) {
     myConsole.log("Error: ", err.message); // For Debugging
