@@ -2,8 +2,7 @@
 // ****************
 const fs = require("fs");
 const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
-const whatsAppService = require("../services/whatsAppService");
-const samples = require("../shared/sampleModels");
+const processMessage = require("../shared/processMessage");
 
 /* 
 VerifyToken():
@@ -53,34 +52,10 @@ const ReceiveMessage = (req, res) => {
       let number = messages["from"];
       let normalizedNumber = normalizeNumber(number);
       let text = getTextUser(messages);
-      myConsole.log("Text: ", text);
-      myConsole.log("Normalized Number: ", normalizedNumber);
-      myConsole.log("Full Message: ", messages);
-
-      // Temp: Enviar el mismo mensaje
-      let data;
-      if (text === "text") {
-        data = samples.sampleText("Hallo!", normalizedNumber);
-      } else if (text === "image") {
-        data = samples.sampleImage(normalizedNumber);
-      } else if (text === "audio") {
-        data = samples.sampleAudio(normalizedNumber);
-      } else if (text === "video") {
-        data = samples.sampleVideo(normalizedNumber);
-      } else if (text === "document") {
-        data = samples.sampleDocument(normalizedNumber);
-      } else if (text === "button") {
-        data = samples.sampleButtons(normalizedNumber);
-      } else if (text === "list") {
-        data = samples.sampleList(normalizedNumber);
-      } else if (text === "location") {
-        data = samples.sampleLocation(normalizedNumber); //error to debug
-      } else {
-        data = samples.sampleText("Mensaje no identificado!", normalizedNumber);
+      if (text != null) {
+        // If there is text:
+        processMessage.process(text, normalizedNumber);
       }
-      // Log the data being sent
-      myConsole.log("Data to send: ", data);
-      whatsAppService.sendMessageWhatsApp(data);
     }
     res.send("EVENT_RECEIVED");
   } catch (err) {
@@ -125,34 +100,36 @@ function normalizeNumber(number) {
   return number;
 }
 
-// Function to process the message with our sample texts.
+// Function to process the message with our sample texts:
+// const whatsAppService = require("../services/whatsAppService");
+// const samples = require("../shared/sampleModels");
 // let data = processMessageTextSample(text, normalizedNumber);
 // Log the data being sent
 // myConsole.log("Data to send: ", data);
 // whatsAppService.sendMessageWhatsApp(data);
-function processMessageTextSample(text, normalizedNumber) {
-  let data;
-  if (text === "text") {
-    data = samples.sampleText("Hallo!", normalizedNumber);
-  } else if (text === "image") {
-    data = samples.sampleImage(normalizedNumber);
-  } else if (text === "audio") {
-    data = samples.sampleAudio(normalizedNumber);
-  } else if (text === "video") {
-    data = samples.sampleVideo(normalizedNumber);
-  } else if (text === "document") {
-    data = samples.sampleDocument(normalizedNumber);
-  } else if (text === "button") {
-    data = samples.sampleButtons(normalizedNumber);
-  } else if (text === "list") {
-    data = samples.sampleList(normalizedNumber);
-  } else if (text === "location") {
-    data = samples.sampleLocation(normalizedNumber); //error to debug
-  } else {
-    data = samples.sampleText("Mensaje no identificado!", normalizedNumber);
-  }
-  return data;
-}
+// function processMessageTextSample(text, normalizedNumber) {
+//   let data;
+//   if (text === "text") {
+//     data = samples.sampleText("Hallo!", normalizedNumber);
+//   } else if (text === "image") {
+//     data = samples.sampleImage(normalizedNumber);
+//   } else if (text === "audio") {
+//     data = samples.sampleAudio(normalizedNumber);
+//   } else if (text === "video") {
+//     data = samples.sampleVideo(normalizedNumber);
+//   } else if (text === "document") {
+//     data = samples.sampleDocument(normalizedNumber);
+//   } else if (text === "button") {
+//     data = samples.sampleButtons(normalizedNumber);
+//   } else if (text === "list") {
+//     data = samples.sampleList(normalizedNumber);
+//   } else if (text === "location") {
+//     data = samples.sampleLocation(normalizedNumber); //error to debug
+//   } else {
+//     data = samples.sampleText("Mensaje no identificado!", normalizedNumber);
+//   }
+//   return data;
+// }
 
 module.exports = {
   VerifyToken,
