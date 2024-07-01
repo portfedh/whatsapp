@@ -39,7 +39,7 @@ Function is called every time a message is received
 - Requires you to be subscribed to messages
 - EVENT_RECEIVED is a necessary response to confirm message
 */
-const ReceiveMessage = (req, res) => {
+async function ReceiveMessage(req, res) {
   try {
     let entry = req.body["entry"][0];
     let changes = entryy["changes"][0];
@@ -56,7 +56,7 @@ const ReceiveMessage = (req, res) => {
         // If there is text:
         myConsole.log("Message Received: ", text); // For Debugging
         myConsole.log("Number: ", number); // For Debugging
-        processMessage.process(text, normalizedNumber);
+        await processMessage.process(text, normalizedNumber);
       }
     }
     res.send("EVENT_RECEIVED");
@@ -64,7 +64,7 @@ const ReceiveMessage = (req, res) => {
     myConsole.log("Error: ", err); // For Debugging
     res.send("EVENT_RECEIVED");
   }
-};
+}
 
 function getTextUser(messages) {
   let text;
