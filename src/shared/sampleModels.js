@@ -5,7 +5,7 @@ function sampleText(textResponse, number) {
     to: number,
     type: "text",
     text: {
-      preview_url: false,
+      preview_url: false, // para no mostrar un preview
       body: textResponse,
     },
   });
