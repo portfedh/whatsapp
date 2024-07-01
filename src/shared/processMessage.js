@@ -15,6 +15,13 @@ function process(textUser, number) {
   } else if (textUser.includes("comprar")) {
     let model = whatsAppModel.messageComprar(number);
     models.push(model);
+    // Vender
+  } else if (textUser.includes("vender")) {
+    let model = whatsAppModel.messageText(
+      "Por favor inscribete aqui: https://admin.salsa-candela.com/classstripeform",
+      number
+    );
+    models.push(model);
     // Agradecimiento
   } else if (textUser.includes("gracias")) {
     let model = whatsAppModel.messageText(
