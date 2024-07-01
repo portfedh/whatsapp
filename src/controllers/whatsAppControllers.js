@@ -42,7 +42,7 @@ Function is called every time a message is received
 const ReceiveMessage = (req, res) => {
   try {
     let entry = req.body["entry"][0];
-    let changes = entry["changes"][0];
+    let changes = entryy["changes"][0];
     let value = changes["value"];
     let messageObject = value["messages"];
 
@@ -54,12 +54,14 @@ const ReceiveMessage = (req, res) => {
       let text = getTextUser(messages);
       if (text != null) {
         // If there is text:
+        myConsole.log("Message Received: ", text); // For Debugging
+        myConsole.log("Number: ", number); // For Debugging
         processMessage.process(text, normalizedNumber);
       }
     }
     res.send("EVENT_RECEIVED");
   } catch (err) {
-    myConsole.log("Error: ", err.message); // For Debugging
+    myConsole.log("Error: ", err); // For Debugging
     res.send("EVENT_RECEIVED");
   }
 };
