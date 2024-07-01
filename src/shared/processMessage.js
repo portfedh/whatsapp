@@ -21,6 +21,12 @@ function process(textUser, number) {
       "Por favor inscribete aqui: https://admin.salsa-candela.com/classstripeform",
       number
     );
+    // Contacto
+  } else if (textUser.includes("contacto")) {
+    let model = whatsAppModel.messageText(
+      "*Centro de contacto:* \n 55-1069-0000",
+      number
+    );
     models.push(model);
     // Agradecimiento
   } else if (textUser.includes("gracias")) {

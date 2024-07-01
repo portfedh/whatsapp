@@ -98,8 +98,26 @@ function messageComprar(number) {
   return data;
 }
 
+function messageLocation(number) {
+  const data = JSON.stringify({
+    messaging_product: "whatsapp",
+    recipient_type: "individual",
+    to: number,
+    type: "location",
+    location: {
+      latitude: "19.390611106716637",
+      longitude: "-99.14289041155234",
+      name: "Salsa Candela Xola",
+      address:
+        "Estafetas 99, Postal, Benito Juárez, 03410 Ciudad de México, CDMX",
+    },
+  });
+  return data;
+}
+
 module.exports = {
   messageText,
   messageList,
   messageComprar,
+  messageLocation,
 };
