@@ -1,21 +1,29 @@
 const OpenAI = require("openai");
 require("dotenv").config({ path: __dirname + "/../.env" });
-console.log("TestToken: ", process.env.OPENAI_API_KEY);
 
 async function getMessageChatGPT(text) {
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
+    organization: "org-RvC0L5PTJO7pgs7NTrNGkl4P",
+    project: "proj_jeoQk7mO14A1lWr603eJKPnX",
   });
 
-  const response = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: text }],
-    max_tokens: 100,
-  });
+  try {
+    const completion = await openai.chat.completions.create({
+      messages: [{ role: "system", content: text }],
+      model: "gpt-4",
+      max_tokens: 100,
+    });
 
-  if (response.status == 200 && response.choices.length > 0) {
-    return response.choices[0].message.content;
-  } else {
+    // console.log(completion.choices[0]);
+
+    if (completion.choices && completion.choices.length > 0) {
+      return completion.choices[0].message.content;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error in getMessageChatGPT: ", error);
     return null;
   }
 }

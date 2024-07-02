@@ -50,6 +50,8 @@ async function process(textUser, number) {
 
   // # region Con ChatGPT
   const resultChatGPT = await chatGptService.getMessageChatGPT(textUser);
+  console.log("Response from ChatGPT: ", resultChatGPT); // Temp
+
   if (resultChatGPT != null) {
     let model = whatsAppModel.messageText(resultChatGPT, number);
     models.push(model);
