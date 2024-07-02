@@ -42,7 +42,7 @@ Function is called every time a message is received
 async function ReceiveMessage(req, res) {
   try {
     let entry = req.body["entry"][0];
-    let changes = entryy["changes"][0];
+    let changes = entry["changes"][0];
     let value = changes["value"];
     let messageObject = value["messages"];
 

@@ -1,24 +1,21 @@
-const { max } = require("moment");
 const { Configuration, OpenAIApi } = require("openai");
-
-// Load environment variables
 require("dotenv").config({ path: __dirname + "/../.env" });
-const accessToken = process.env.OPENAI_API_KEY;
-console.log("TestToken: ", accessToken);
+console.log("TestToken: ", process.env.OPENAI_API_KEY);
 
 async function getMessageChatGPT(text) {
-  const configuration = new Configuration({ apiKey: accessToken });
-
+  const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
   const openai = new OpenAIApi(configuration);
 
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    prompt: text,
+    messages: [{ role: "user", content: text }],
     max_tokens: 100,
   });
 
   if (response.status == 200 && response.data.choices.length > 0) {
-    return response.data.choices[0].text;
+    return response.data.choices[0].message.content;
   } else {
     return null;
   }
