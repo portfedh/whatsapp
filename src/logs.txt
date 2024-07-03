@@ -1,5 +1,0 @@
-Message Received:  Guten Morgen!
-From number:  5215510699160
-Response from ChatGPT:  Guten Morgen! Wie kann ich Ihnen heute helfen?
-Data to be sent:  {"messaging_product":"whatsapp","recipient_type":"individual","to":"525510699160","type":"text","text":{"preview_url":true,"body":"Guten Morgen! Wie kann ich Ihnen heute helfen?"}}
-Response from WhatsApp API:  {"messaging_product":"whatsapp","contacts":[{"input":"525510699160","wa_id":"5215510699160"}],"messages":[{"id":"wamid.HBgNNTIxNTUxMDY5OTE2MBUCABEYEjFDQUI5NEM4QzdCRkM1QjFBMQA="}]}

@@ -49,7 +49,7 @@ async function process(textUser, number) {
   // }
   // #endregion Sin ChatGPT
 
-  // # region Con ChatGPT
+  // #region Con ChatGPT
   const resultChatGPT = await chatGptService.getMessageChatGPT(textUser);
   myConsole.log("Response from ChatGPT: ", resultChatGPT); // Temp
 

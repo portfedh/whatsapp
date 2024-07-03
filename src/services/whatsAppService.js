@@ -9,7 +9,7 @@ Function to send messages to WhatsApp a user.
 - The path is also provided by Meta
 */
 function sendMessageWhatsApp(data) {
-  myConsole.log("Data to be sent: ", data);
+  // myConsole.log("Data to be sent: ", data);
 
   const options = {
     host: "graph.facebook.com",
@@ -31,7 +31,7 @@ function sendMessageWhatsApp(data) {
     });
 
     res.on("end", () => {
-      myConsole.log("Response from WhatsApp API: ", responseData);
+      // myConsole.log("Response from WhatsApp API: ", responseData);
     });
   });
 
