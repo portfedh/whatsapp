@@ -1,7 +1,6 @@
 // Home Controllers
 // ****************
-const fs = require("fs");
-const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
+const myConsole = require("../services/logger");
 const processMessage = require("../shared/processMessage");
 
 /* 
@@ -52,10 +51,12 @@ async function ReceiveMessage(req, res) {
       let number = messages["from"];
       let normalizedNumber = normalizeNumber(number);
       let text = getTextUser(messages);
+
       if (text != null) {
         // If there is text:
         myConsole.log("Message Received: ", text); // For Debugging
-        myConsole.log("Number: ", number); // For Debugging
+        myConsole.log("From number: ", number); // For Debugging
+        // Respond to message:
         await processMessage.process(text, normalizedNumber);
       }
     }
@@ -102,7 +103,8 @@ function normalizeNumber(number) {
   return number;
 }
 
-// Function to process the message with our sample texts:
+// Function to process the message with sample texts:
+// **************************************************
 // const whatsAppService = require("../services/whatsAppService");
 // const samples = require("../shared/sampleModels");
 // let data = processMessageTextSample(text, normalizedNumber);

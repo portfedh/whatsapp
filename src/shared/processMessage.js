@@ -1,6 +1,7 @@
 const whatsAppModel = require("../shared/whatsAppModels");
 const whatsAppService = require("../services/whatsAppService");
 const chatGptService = require("../services/chatGptService");
+const myConsole = require("../services/logger");
 
 async function process(textUser, number) {
   textUser = textUser.toLowerCase();
@@ -50,7 +51,7 @@ async function process(textUser, number) {
 
   // # region Con ChatGPT
   const resultChatGPT = await chatGptService.getMessageChatGPT(textUser);
-  console.log("Response from ChatGPT: ", resultChatGPT); // Temp
+  myConsole.log("Response from ChatGPT: ", resultChatGPT); // Temp
 
   if (resultChatGPT != null) {
     let model = whatsAppModel.messageText(resultChatGPT, number);
