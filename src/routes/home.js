@@ -6,10 +6,11 @@
 const express = require("express");
 const router = express.Router();
 const whatsAppController = require("../controllers/whatsAppControllers");
+const verifyTokenController = require("../controllers/verifyTokenController");
 
 // Routes
 // ******
-router.get("/", whatsAppController.VerifyToken);
+router.get("/", verifyTokenController.VerifyToken);
 router.post("/", whatsAppController.ReceiveMessage);
 
 // Exports
