@@ -1,3 +1,6 @@
+// Environment variables
+require("dotenv").config();
+
 // Express
 // =======
 const express = require("express");

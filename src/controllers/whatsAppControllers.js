@@ -12,7 +12,7 @@ Function is only called once
 */
 const VerifyToken = (req, res) => {
   try {
-    let accessToken = "AngryTurkeys";
+    let accessToken = process.env.WHATSAPP_VERIFY_TOKEN;
     let token = req.query["hub.verify_token"];
     let challenge = req.query["hub.challenge"];
     if (challenge != null && token != null && token == accessToken) {
