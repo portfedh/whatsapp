@@ -15,7 +15,7 @@ const VerifyToken = (req, res) => {
     let challenge = req.query["hub.challenge"];
     if (challenge != null && token != null && token == accessToken) {
       // If correct:
-      res.send(`Token verified. Your challenge was: ${challenge}`);
+      res.send(challenge);
     } else {
       // If incorrect:
       res
