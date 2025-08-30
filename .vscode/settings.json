@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/6583121b-bbde-48be-8dec-4dba1ba0a446/resourceGroups/SalsaCandelaWhatsApp/providers/Microsoft.Web/sites/SalsaCandelaWhatsApp",
+  "appService.deploySubpath": "src"
+}
