@@ -5,13 +5,16 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "WhatsApp App API",
+      title: "Salsa Candela WhatsApp API",
       version: "1.0.0",
-      description: "API documentation for WhatsApp App",
+      description: "API documentation for Salsa Candela WhatsApp App",
     },
     servers: [
       {
         url: "http://localhost:3131",
+      },
+      {
+        url: "https://whatsapp-salsa-candela.up.railway.app",
       },
     ],
   },
