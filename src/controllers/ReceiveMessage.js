@@ -12,7 +12,6 @@ const normalizeNumber = require("../utils/normalizeNumber");
  */
 async function ReceiveMessage(req, res) {
   try {
-    console.log("Webhook event received:", JSON.stringify(req.body)); // For Debugging
     let entry = req.body["entry"][0];
     let changes = entry["changes"][0];
     let value = changes["value"];
