@@ -71,6 +71,34 @@ router.get("/health", (req, res) => {
  *                 value: "error: some error message"
  *   post:
  *     summary: Receive WhatsApp message
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *           example:
+ *             object: "whatsapp_business_account"
+ *             entry:
+ *               - id: "344026082123296"
+ *                 changes:
+ *                   - value:
+ *                       messaging_product: "whatsapp"
+ *                       metadata:
+ *                         display_phone_number: "15550191723"
+ *                         phone_number_id: "344985858695654"
+ *                       contacts:
+ *                         - profile:
+ *                             name: "Pablo Cruz"
+ *                           wa_id: "5215510699160"
+ *                       messages:
+ *                         - from: "5215510699160"
+ *                           id: "wamid.HBgNNTIxNTUxMDY5OTE2MBUCABIYFjNFQjA3M0Q1QUFEQjYzMTJBMjM5RkMA"
+ *                           timestamp: "1756614004"
+ *                           text:
+ *                             body: "This is a test message, sent by the user."
+ *                           type: "text"
+ *                     field: "messages"
  *     responses:
  *       200:
  *         description: Message received
