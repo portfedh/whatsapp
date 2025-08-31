@@ -36,7 +36,7 @@ router.get("/health", (req, res) => {
 
 /**
  * @swagger
- * /:
+ * /webhook:
  *   get:
  *     summary: Verify webhook token
  *     parameters:
@@ -69,6 +69,12 @@ router.get("/health", (req, res) => {
  *               error:
  *                 summary: Error
  *                 value: "error: some error message"
+ */
+router.get("/", verifyTokenController.VerifyToken);
+
+/**
+ * @swagger
+ * /:
  *   post:
  *     summary: Receive WhatsApp message
  *     requestBody:
@@ -103,7 +109,6 @@ router.get("/health", (req, res) => {
  *       200:
  *         description: Message received
  */
-router.get("/", verifyTokenController.VerifyToken);
 router.post("/", ReceiveMessage);
 
 // Exports

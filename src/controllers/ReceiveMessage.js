@@ -12,6 +12,7 @@ const normalizeNumber = require("../utils/normalizeNumber");
  */
 async function ReceiveMessage(req, res) {
   try {
+    console.log(req.body); // For Debugging
     let entry = req.body["entry"][0];
     let changes = entry["changes"][0];
     let value = changes["value"];
@@ -28,6 +29,8 @@ async function ReceiveMessage(req, res) {
         // If there is text:
         myConsole.log("Message Received: ", text); // For Debugging
         myConsole.log("From number: ", number); // For Debugging
+        console.log("Message Received: ", text); // For Debugging
+        console.log("From number: ", number); // For Debugging
         // Respond to message:
         await processMessage.process(text, normalizedNumber);
       }
