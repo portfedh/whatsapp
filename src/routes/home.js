@@ -5,13 +5,13 @@
 // *******
 const express = require("express");
 const router = express.Router();
-const whatsAppController = require("../controllers/whatsAppControllers");
+const ReceiveMessage = require("../controllers/ReceiveMessage");
 const verifyTokenController = require("../controllers/verifyTokenController");
 
 // Routes
 // ******
 router.get("/", verifyTokenController.VerifyToken);
-router.post("/", whatsAppController.ReceiveMessage);
+router.post("/", ReceiveMessage);
 
 // Exports
 // *******

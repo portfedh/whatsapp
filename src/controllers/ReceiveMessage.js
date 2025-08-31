@@ -1,16 +1,8 @@
-// Home Controllers
-// ****************
 const myConsole = require("../services/logger");
 const processMessage = require("../shared/processMessage");
+const getTextUser = require("./getTextUser");
+const normalizeNumber = require("./normalizeNumber");
 
-
-/* 
-ReceiveMessage():
-Function is called every time a message is received
-- Requires a webhooks to be set up in the Facebook Developer Console
-- Requires you to be subscribed to messages
-- EVENT_RECEIVED is a necessary response to confirm message
-*/
 async function ReceiveMessage(req, res) {
   try {
     let entry = req.body["entry"][0];
@@ -40,41 +32,13 @@ async function ReceiveMessage(req, res) {
   }
 }
 
-function getTextUser(messages) {
-  let text;
-  let typeMessage = messages["type"];
-  if (typeMessage === "text") {
-    // Text
-    text = messages["text"]["body"];
-  } else if (typeMessage === "interactive") {
-    // Interactive
-    let interactiveObject = messages["interactive"];
-    let typeInteractive = interactiveObject["type"];
-    if (typeInteractive === "button_reply") {
-      // Interactive Button pressed
-      text = interactiveObject["button_reply"]["title"];
-    } else if (typeInteractive === "list_reply") {
-      // Interactive List reply
-      text = interactiveObject["list_reply"]["title"];
-    } else {
-      myConsole.log("Sin mensaje");
-    }
-  } else {
-    myConsole.log("Sin mensaje");
-  }
-  return text;
-}
-/**
-normalizeNumber():
-Remove the leading "1" if it is present after the country code "52" for Mexico.
-Otherwise, return the number as is.
- */
-function normalizeNumber(number) {
-  if (number.startsWith("521")) {
-    return "52" + number.slice(3);
-  }
-  return number;
-}
+/* 
+ReceiveMessage():
+Function is called every time a message is received
+- Requires a webhooks to be set up in the Facebook Developer Console
+- Requires you to be subscribed to messages
+- EVENT_RECEIVED is a necessary response to confirm message
+*/
 
 // Function to process the message with sample texts:
 // **************************************************
@@ -108,8 +72,4 @@ function normalizeNumber(number) {
 //   return data;
 // }
 
-module.exports = {
-  ReceiveMessage,
-  getTextUser,
-  normalizeNumber,
-};
+module.exports = ReceiveMessage;
