@@ -3,6 +3,13 @@ const processMessage = require("../shared/processMessage");
 const getTextUser = require("./getTextUser");
 const normalizeNumber = require("./normalizeNumber");
 
+/**
+ * Controller to handle incoming WhatsApp webhook messages.
+ * Extracts message data, normalizes the sender's number, and processes the message text.
+ * Always responds with 'EVENT_RECEIVED' to acknowledge the webhook event.
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 async function ReceiveMessage(req, res) {
   try {
     let entry = req.body["entry"][0];

@@ -1,5 +1,11 @@
 // Modelos dedicados al caso de uso de el bot.
 
+/**
+ * Generates a WhatsApp text message payload for the bot use case.
+ * @param {string} textResponse - The text to send
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function messageText(textResponse, number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",
@@ -14,6 +20,11 @@ function messageText(textResponse, number) {
   return data;
 }
 
+/**
+ * Generates a WhatsApp interactive list message payload for the bot use case.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function messageList(number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",
@@ -64,6 +75,11 @@ function messageList(number) {
   return data;
 }
 
+/**
+ * Generates a WhatsApp interactive button message payload for course selection.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function messageComprar(number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",
@@ -98,6 +114,11 @@ function messageComprar(number) {
   return data;
 }
 
+/**
+ * Generates a WhatsApp location message payload for the bot use case.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function messageLocation(number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",

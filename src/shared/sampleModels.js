@@ -1,3 +1,9 @@
+/**
+ * Generates a sample WhatsApp text message payload.
+ * @param {string} textResponse - The text to send
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function sampleText(textResponse, number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",
@@ -12,6 +18,11 @@ function sampleText(textResponse, number) {
   return data;
 }
 
+/**
+ * Generates a sample WhatsApp image message payload.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function sampleImage(number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",
@@ -25,6 +36,11 @@ function sampleImage(number) {
   return data;
 }
 
+/**
+ * Generates a sample WhatsApp audio message payload.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function sampleAudio(number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",
@@ -38,6 +54,11 @@ function sampleAudio(number) {
   return data;
 }
 
+/**
+ * Generates a sample WhatsApp video message payload.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function sampleVideo(number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",
@@ -52,6 +73,11 @@ function sampleVideo(number) {
   return data;
 }
 
+/**
+ * Generates a sample WhatsApp document message payload.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function sampleDocument(number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",
@@ -66,6 +92,11 @@ function sampleDocument(number) {
   return data;
 }
 
+/**
+ * Generates a sample WhatsApp interactive button message payload.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function sampleButtons(number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",
@@ -100,6 +131,11 @@ function sampleButtons(number) {
   return data;
 }
 
+/**
+ * Generates a sample WhatsApp interactive list message payload.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function sampleList(number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",
@@ -145,6 +181,11 @@ function sampleList(number) {
   return data;
 }
 
+/**
+ * Generates a sample WhatsApp location message payload.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
 function sampleLocation(number) {
   const data = JSON.stringify({
     messaging_product: "whatsapp",

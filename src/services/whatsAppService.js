@@ -2,12 +2,12 @@ const https = require("https");
 const fs = require("fs");
 const myConsole = require("./logger");
 
-/* 
-SendMessageWhatsApp:
-Function to send messages to WhatsApp a user. 
-- Requires Token from Meta Developer Console
-- The path is also provided by Meta
-*/
+/**
+ * Sends a message to a WhatsApp user using the Meta (Facebook) API.
+ * Requires a valid access token and endpoint path from the Meta Developer Console.
+ * Logs errors using the custom logger.
+ * @param {string} data - The message payload as a JSON string
+ */
 function sendMessageWhatsApp(data) {
   // myConsole.log("Data to be sent: ", data);
 

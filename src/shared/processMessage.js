@@ -3,6 +3,15 @@ const whatsAppService = require("../services/whatsAppService");
 const chatGptService = require("../services/chatGptService");
 const myConsole = require("../services/logger");
 
+
+/**
+ * Processes a user's WhatsApp message and sends an appropriate response.
+ * Uses ChatGPT to generate a reply, or falls back to a default message if needed.
+ * Sends the response(s) using the WhatsApp service.
+ * @param {string} textUser - The user's message text
+ * @param {string} number - The user's WhatsApp number
+ * @returns {Promise<void>}
+ */
 async function process(textUser, number) {
   textUser = textUser.toLowerCase();
   let models = [];

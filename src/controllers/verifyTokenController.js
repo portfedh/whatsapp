@@ -1,13 +1,13 @@
 // Verify Token Controller
 // **********************
 
-/* 
-VerifyToken():
-Function is only called once
-- Requires a webhooks to be set up in the Facebook Developer Console
-- Requires a public url to send the request
-- Requires you paste accessToken there to verify the request
-*/
+/**
+ * Controller to verify the webhook token for WhatsApp integration.
+ * Called once during webhook setup to validate the provided token.
+ * Responds with the challenge if the token is valid, otherwise returns an error.
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 const VerifyToken = (req, res) => {
   try {
     let accessToken = process.env.WHATSAPP_VERIFY_TOKEN;

@@ -1,5 +1,12 @@
 const myConsole = require("../services/logger");
 
+/**
+ * Extracts the text content from a WhatsApp message object.
+ * Handles both plain text and interactive message types (button, list).
+ * Logs if no message is found.
+ * @param {Object} messages - The WhatsApp message object
+ * @returns {string|undefined} The extracted text, or undefined if not found
+ */
 function getTextUser(messages) {
   let text;
   let typeMessage = messages["type"];

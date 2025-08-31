@@ -1,5 +1,11 @@
 const OpenAI = require("openai");
 
+/**
+ * Sends a prompt to OpenAI's ChatGPT and returns the generated response.
+ * Uses the GPT-4 model and a system message role.
+ * @param {string} text - The prompt or message to send to ChatGPT
+ * @returns {Promise<string|null>} The response from ChatGPT, or null if an error occurs
+ */
 async function getMessageChatGPT(text) {
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
