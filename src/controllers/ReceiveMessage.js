@@ -1,7 +1,7 @@
 const myConsole = require("../services/logger");
 const processMessage = require("../shared/processMessage");
-const getTextUser = require("./getTextUser");
-const normalizeNumber = require("./normalizeNumber");
+const getTextUser = require("../utils/getTextUser");
+const normalizeNumber = require("../utils/normalizeNumber");
 
 /**
  * Controller to handle incoming WhatsApp webhook messages.
