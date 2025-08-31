@@ -8,6 +8,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Swagger setup
+const setupSwagger = require("./swagger");
+setupSwagger(app);
+
 // Routes:
 // =======
 const homeRoutes = require("./routes/home");
