@@ -1,4 +1,4 @@
-// Modelos dedicados al caso de uso de el bot.
+// sampleModels adaptados para el API de SalsaCandela.
 
 /**
  * Generates a WhatsApp text message payload for the bot use case.
