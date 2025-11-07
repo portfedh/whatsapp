@@ -152,9 +152,113 @@ function messageLocation(number) {
   return data;
 }
 
+/**
+ * Generates a WhatsApp image message with party event details.
+ * Note: Update the image link with your actual hosted image URL.
+ * Place your event image in: assets/images/fiesta-event.jpg
+ * Then host it or use WhatsApp's media upload API.
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
+function messageFiesta(number) {
+  const data = JSON.stringify({
+    messaging_product: "whatsapp",
+    recipient_type: "individual",
+    to: number,
+    type: "image",
+    image: {
+      link: "https://salsa-candela.com/img/party/fiesta_2025_11_14.jpeg",
+      caption: `¡Te esperamos HOY 24 de octubre para una noche llena de baile en Salsatélite! Toda la comunidad Candela estará presente. Porque tu lo pediste, hemos revolucionado el evento para darte la mejor experiencia, sigue leyendo…
+
+Salsatélite —> info completa en FB -> https://www.facebook.com/events/816268047698631
+📍Av. Lomas Verdes 896 (CCM) —> ubicación  https://maps.app.goo.gl/ogjyCuoZLmJ8WsxD7
+🕥 vie 24 oct / 8:30pm - 2:30am
+🔹espacio amplio y bien ventilado
+🔹luz y sonido profesionales.
+🔹estacionamiento
+
+🚫NO MÁS FILAS
+🔸Podrás adquirir tus bebidas en nuestra nuevo bar digital desde tu cel —> https://bar.salsa-candela.com
+
+Si aun no tienes tu boleto, puedes adquirirlo en preventa ($100 por boleto) aun hoy antes de las 6pm utilizando cualquiera de nuestras formas de pago:
+
+🔸Pago con tarjeta en https://admin.salsa-candela.com/fiesta/boletos
+🔸Depósito o transferencia en:
+BBVA (Rodrigo Chávez Calvillo)
+CLABE: 012180027842910184
+Cuenta: 2784291018
+Tarjeta: 4152 3145 0520 6972
+
+¡Te esperamos!`,
+    },
+  });
+  return data;
+}
+
+/**
+ * Generates a WhatsApp image message with workshop information and pre-sale discount.
+ * This is the first message in a two-part sequence for workshop inquiries.
+ * Images are served from the public folder via Express static middleware.
+ * Image file: src/public/images/aprende-salsa-desde-cero.jpg
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
+function messageWorkshopInfo(number) {
+  const data = JSON.stringify({
+    messaging_product: "whatsapp",
+    recipient_type: "individual",
+    to: number,
+    type: "image",
+    image: {
+      link: "https://whatsapp-salsa-candela.up.railway.app/images/aprende-salsa-desde-cero.jpg",
+      caption: `Gracias por pedir informes sobre nuestras clases!  Te recordamos que nuestro taller Aprende salsa desde cero comienza el próximo 15 de noviembre  y tenemos 50% de descuento por preventa hasta el día de HOY viernes 7 de noviembre:
+
+🔹paga sólo $650  en vez de $1300  (pase individual / 5 semanas)
+🔹o paga $1000 en lugar de $2000 (pase en pareja).
+
+📸 —> Por favor revisa la info completa y un video del curso en www.salsacandela.net/taller.
+
+✔️nunca más sentad@ en las fiestas
+✔️no es necesario llevar pareja
+✔️aprende desde cero
+✔️12 años de experiencia en Mexico, Cuba y Alemania.
+✔️todas las edades
+✔️sigue aprendiendo hasta niveles avanzados
+✔️conoce gente. ¡Diviértete!
+
+Puedes elegir la sucursal y horario que te acomode mejor:`,
+    },
+  });
+  return data;
+}
+
+/**
+ * Generates a WhatsApp image message showing branch locations and schedules.
+ * This is the second message in a two-part sequence for workshop inquiries.
+ * Send this after messageWorkshopInfo().
+ * Image is served from: src/public/images/sucursal-xola.jpeg
+ * @param {string} number - The recipient's WhatsApp number
+ * @returns {string} JSON string payload
+ */
+function messageWorkshopLocations(number) {
+  const data = JSON.stringify({
+    messaging_product: "whatsapp",
+    recipient_type: "individual",
+    to: number,
+    type: "image",
+    image: {
+      link: "https://whatsapp-salsa-candela.up.railway.app/images/sucursal-xola.jpeg",
+    },
+  });
+  return data;
+}
+
 module.exports = {
   messageText,
   messageList,
   messageComprar,
   messageLocation,
+  messageFiesta,
+  messageWorkshopInfo,
+  messageWorkshopLocations,
 };

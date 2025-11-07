@@ -4,9 +4,13 @@ require("dotenv").config();
 // Express
 // =======
 const express = require("express");
+const path = require("path");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Serve static files (images, etc.) from the public folder
+app.use(express.static(path.join(__dirname, "public")));
 
 // Swagger setup
 const setupSwagger = require("./swagger");

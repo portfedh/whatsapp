@@ -9,7 +9,7 @@ const myConsole = require("./logger");
  * @param {string} data - The message payload as a JSON string
  */
 function sendMessageWhatsApp(data) {
-  // myConsole.log("Data to be sent: ", data);
+  myConsole.log("Data to be sent: ", data);
 
   const options = {
     host: "graph.facebook.com",
@@ -30,7 +30,7 @@ function sendMessageWhatsApp(data) {
     });
 
     res.on("end", () => {
-      // myConsole.log("Response from WhatsApp API: ", responseData);
+      myConsole.log("Response from WhatsApp API: ", responseData);
     });
   });
 

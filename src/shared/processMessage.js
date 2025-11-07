@@ -33,6 +33,7 @@ async function process(textUser, number) {
       "Por favor inscribete aqui: https://admin.salsa-candela.com/classstripeform",
       number
     );
+    models.push(model);
     // Contacto
   } else if (textUser.includes("contacto")) {
     let model = whatsAppModel.messageText(
@@ -40,6 +41,16 @@ async function process(textUser, number) {
       number
     );
     models.push(model);
+    // Fiesta
+  } else if (textUser.includes("fiesta")) {
+    let model = whatsAppModel.messageFiesta(number);
+    models.push(model);
+    // Clases
+  } else if (textUser.includes("clases")) {
+    let modelInfo = whatsAppModel.messageWorkshopInfo(number);
+    models.push(modelInfo);
+    let modelLocations = whatsAppModel.messageWorkshopLocations(number);
+    models.push(modelLocations);
     // Agradecimiento
   } else if (textUser.includes("gracias")) {
     let model = whatsAppModel.messageText(
