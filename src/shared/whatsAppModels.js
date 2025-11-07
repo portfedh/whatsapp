@@ -1,4 +1,20 @@
-// sampleModels adaptados para el API de SalsaCandela.
+/**
+ * whatsAppModels.js
+ *
+ * PRODUCTION MESSAGE TEMPLATES
+ *
+ * This file contains the actual message templates actively used by the Salsa Candela chatbot.
+ * These functions are called by processMessage.js to generate responses based on user keywords.
+ *
+ * Key functions:
+ * - messageText(): Simple text responses
+ * - messageList(): Interactive list menus for course selection
+ * - messageComprar(): Button-based purchase flow
+ * - messageLocation(): Share business location with users
+ *
+ * Note: For reference examples of other WhatsApp message types (images, videos, audio, etc.),
+ * see sampleModels.js instead.
+ */
 
 /**
  * Generates a WhatsApp text message payload for the bot use case.

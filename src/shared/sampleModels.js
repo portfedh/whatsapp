@@ -1,4 +1,24 @@
-// Diferntes modelos 
+/**
+ * sampleModels.js
+ *
+ * REFERENCE LIBRARY / EXAMPLE TEMPLATES
+ *
+ * This file provides reference examples for various WhatsApp Cloud API message types.
+ * These are NOT actively used by the bot - they serve as documentation and templates
+ * for developers who want to implement new message types.
+ *
+ * Available examples:
+ * - sampleText: Basic text messages
+ * - sampleImage: Send images via URL
+ * - sampleAudio: Send audio files
+ * - sampleVideo: Send video with captions
+ * - sampleDocument: Send PDF/documents
+ * - sampleButtons: Interactive button messages
+ * - sampleList: Interactive list menus
+ * - sampleLocation: Share location coordinates
+ *
+ * Note: For production message templates actually used by the bot, see whatsAppModels.js
+ */
 
 /**
  * Generates a sample WhatsApp text message payload.
